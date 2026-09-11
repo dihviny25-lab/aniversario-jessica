@@ -356,6 +356,28 @@ body {
 }
 .letter-card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(43,36,25,0.12); }
 .letter-card-icon { font-size: 2.4rem; margin-bottom: 12px; }
+.letter-modal-gallery {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  white-space: normal;
+}
+.letter-modal-gallery img {
+  flex: 1;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(184,146,63,0.25);
+}
+.letter-card-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  border: 2px solid var(--gold-lt);
+  display: block;
+}
 .letter-card-name { font-family: var(--font-serif); font-size: 1.25rem; color: var(--ink); margin-bottom: 4px; }
 .letter-card-hint { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
 
@@ -828,6 +850,13 @@ body {
   </div>
 </section>
 
+<!-- CAP 9.5 — CARTAS DE QUEM AMA -->
+<section class="chapter" data-section="cartas-amigos">
+  <div class="chapter-label">Capítulo 9.5</div>
+  <h2 class="chapter-title reveal">Cartas de <em>quem ama você</em></h2>
+  <div class="letters-grid reveal" id="cartas-amigos-grid"></div>
+</section>
+
 <!-- CAP 10 — CONTADOR -->
 <section class="chapter" data-section="contador">
   <div class="chapter-label">Capítulo 10</div>
@@ -1032,6 +1061,162 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
     if (e.target === overlay) closeModal(overlay.id);
   });
 });
+
+/* ===========================
+   CARTAS DE AMIGOS
+=========================== */
+const CARTAS_AMIGOS = [
+  {
+    id: 'carta-raquel',
+    nome: 'Raquel',
+    relacao: 'Sogra',
+    icon: '💕',
+    foto: 'fotos/cartas/raquel.png',
+    texto: `O que eu tenho a dizer sobre vc...
+Lembro qdo vc começou a ir na minha casa participar da célula que tinha la🤭.mais a vdd q e vc estava interessada no meu filho 😍.
+Mais o tempo foi passando e vcs começaram a orar pra namorar né.
+Ate as coisas derem certo e começaram a namorar.
+Eu ficava só observando...
+E o tempo passou e se casaram,.
+Começava ali uma família,que confesso fiquei muito apreensiva no começo, mais vcs se entenderam e Deus abençoou.
+Pra nossa surpresa logo vc ficou grávida. Foram tempos difíceis e depois se tornou muito complicado.
+Eu nao sabia que vc teve depressão pós parto e eu sem entender o que estava acontecendo, sofria muito com a distância, sem poder ver minha neta,mais enfim ,tudo passou e depois veio Estevão e qdo menos esperávamos olha o Ethan pra aumentar a família e trazer mais alegrias.
+Confesso que nossa relação não era muito amistosa né mais com o tempo aa coisas foram se ajeitando.
+Me vejo em vc várias vezes, com 3 crianças pra cuidar, educar, dar atenção, e zelosa ,caprichosa enfim uma verdadeira maezona.
+Mulher de Deus, boa esposa .
+Tenho que admitir, que vc me surpreendeu.
+Mais a vida e assim mesmo quando parece que nao vamos dar conta de tantas coisas ,o Senhor renova a nossa força e nos faz crescer e vencer cada desafio. Que o senhor Jesus continue abençoando sua vida e transborde bênçãos sobre você muitas felicidades pra você saúde,paz,amor e a presença do Espírito Santo sempre em sua vida,
+Um grande abraço e um bjao🥰😘`
+  },
+  {
+    id: 'carta-rosa',
+    nome: 'Rosa',
+    relacao: 'Mãe',
+    icon: '🌹',
+    foto: 'fotos/cartas/rosa.jpg',
+    texto: `Parabéns minha filha pelo seu aniversário,como é bom poder compartilhar de mais um ano de vida com vc ,ver a mulher linda que vc se tornou e formou uma família linda , tenho tanto orgulho de vc ❤️ continue está filha dedicada e temente a Deus sempre ,te amo muito estarei aqui sempre que precisar,curta seu dia ! Feliz vida 🌹`
+  },
+  {
+    id: 'carta-renata',
+    nome: 'Renata',
+    relacao: 'Irmã',
+    icon: '👯',
+    foto: 'fotos/cartas/renata1.jpg',
+    fotos: ['fotos/cartas/renata1.jpg', 'fotos/cartas/renata2.jpg', 'fotos/cartas/renata3.jpg'],
+    texto: `Olha, me senti igual quando nós tínhamos 15 anos e tinha que escrever aqueles textos de aniversário no Facebook, então vou fazer igual rs'
+
+Caraca 31 aninhos já 😱 tá ficando velhinha rs'
+
+O que dizer sobre você que sempre esteve comigo, nos momentos bons e ruins, agora os dias de glória chegaram e entre nós a paz reinou, mas também com tantas brigas dos nossos filhos, não sobra tempo pra querer brigar kkk
+
+Queria dizer que tenho muito orgulho de quem você se tornou, uma mãe e mulher exemplar, dedicada, mulher de fé, virtuosa.
+
+Amo você, conta comigo sempre, te considero pakas`
+  },
+  {
+    id: 'carta-marta',
+    nome: 'Marta',
+    relacao: 'Cunhada',
+    icon: '🏋️‍♀️',
+    foto: 'fotos/cartas/marta.jpg',
+    texto: `O que dizer de vc cunhada ?
+
+Esquisita ? Audaciosa ? Brincalhona e debochada ? Linda ? Mulher Virturosa ?
+Ahhhh, simm ! Isso tudo mais chega de encher seu saco kkkk
+Brincadeiras a parte, passando pra desejar um feliz novo ciclo, feliz vida! Muita e muita saúde e amor. Quero dizer que vc é um ser humano incrível, uma mãezona paras as crianças e uma mulher muito honrada, sou privilegiada por ter você ! Eu aprendi a Amar a sua vida, e desejo do fundo do meu coração que vc seja surpreendida pelas benções do Senhor. Conte comigo sempre!
+
+Happy Happy 👏👏👏👏🥂🥳🥳🥳🥳🥳
+
+Temos que comemorar treinando viu ? Kkk
+
+Amo vc ♥️`
+  },
+  {
+    id: 'carta-daniela',
+    nome: 'Daniela',
+    relacao: 'Amiga',
+    icon: '👯‍♀️',
+    foto: 'fotos/cartas/daniela.jpg',
+    texto: `Oiiii amigaaaa, hoje é o seu dia. Sou muito feliz por ter uma amiga tão legal e linda como você.
+Ter você em minha vida é sensacional, pois eu sei que se eu precisar você vai estar lá.
+Ahhhh saudade do seu bolo de chocolate, mas o mon mon as vezes atrapalha kkkkkk.
+Suas risadas são as melhores, ouvir em 2x melhor ainda 🤣🤣🤣🤣🤣.
+O que eu quero desejar pra você é muita saúde, presença de Deus, que você continue sendo essa mulher incrível que é.
+Saiba que eu amo você amiga.
+Feliz aniversário 🎊🎉🎁🎂🎈`
+  },
+  {
+    id: 'carta-karol',
+    nome: 'Karol',
+    relacao: 'Amiga',
+    icon: '💛',
+    foto: 'fotos/cartas/karol.jpg',
+    texto: `Jéss
+
+Hoje, no seu aniversário, fiquei pensando em quanto tempo já se passou desde que nos conhecemos e em quantas fases da vida nós já atravessamos juntas.
+
+Eu me lembro do nosso primeiro encontro como se fosse ontem. A Ester ainda era uma bebezinha. Você me convidou para um chá da tarde na sua casa, depois que nossos maridos haviam se conhecido. O Matheus cortava o cabelo com o Diego, na barbearia do seu sogro, e vocês moravam ali em cima.
+
+Naquela tarde, você abriu seu coração para mim e me contou um pouco da sua história, da caminhada de vocês na outra igreja e também de momentos difíceis que tinha vivido. Lembro especialmente de você falar sobre o período do seu pós-operatório, de como tinha sido difícil passar por aquilo e, em alguns momentos, se sentir tão sozinha. Talvez a gente nem imaginasse naquele dia tudo o que Deus ainda construiria a partir daquele primeiro encontro.
+
+Pouco tempo depois, vocês começaram a frequentar a igreja e, aos poucos, sua família foi se tornando parte da nossa caminhada. Então veio a gestação do Estevão. Lembro com muito carinho do chá de bebê que fizemos, ainda na época da igreja na Rua do Fico. Foi tudo muito simples e singelo, mas feito com muito amor.
+
+Vieram tantas outras fases… A pandemia, o período em que acabamos ficando um pouco mais distantes e, depois, aos poucos, Deus foi nos aproximando novamente.
+
+Então chegou o curso de teologia e, com ele, um tempo muito especial para nós. Foram praticamente dois anos nos encontrando quase todas as semanas, geralmente às sextas, às vezes às quintas, fazendo a unha, conversando sobre a vida, compartilhando o coração e vivendo um tempo precioso de proximidade e discipulado.
+
+Depois vieram as Pacificadoras, novos alinhamentos, novas conversas e um novo tempo. E hoje sinto que estamos vivendo uma fase muito bonita na igreja e também na nossa amizade. Voltamos a nos encontrar, agora quinzenalmente, e tenho percebido que estamos construindo algo que vai além de simplesmente caminharmos juntas na igreja: estamos construindo uma amizade.
+
+E eu sou muito grata a Deus por isso.
+
+Jéssica, agradeço a Deus pela sua vida, pela sua família e pelos seus filhos. Agradeço por cada fase que já vivemos e oro para que ainda tenhamos muitos anos pela frente, caminhando, crescendo, amadurecendo e servindo ao Senhor juntas.
+
+Que esse novo ciclo seja cheio da presença de Deus, de alegrias, conquistas, respostas de oração e muitas vitórias. Que você continue florescendo em tudo aquilo que o Senhor sonhou para a sua vida.
+
+Feliz aniversário!
+
+Que venham muitos outros capítulos dessa nossa história.
+
+Com muito carinho,
+Karol`
+  }
+];
+
+function buildCartasAmigos() {
+  const grid = document.getElementById('cartas-amigos-grid');
+  if (!grid) return;
+
+  CARTAS_AMIGOS.forEach(carta => {
+    const card = document.createElement('div');
+    card.className = 'letter-card';
+    card.onclick = () => openModal(carta.id);
+    card.innerHTML = `
+      ${carta.foto ? `<img src="${carta.foto}" alt="${carta.nome}" class="letter-card-photo">` : `<div class="letter-card-icon">${carta.icon}</div>`}
+      <div class="letter-card-name">${carta.nome}</div>
+      <div class="letter-card-hint">${carta.relacao}</div>
+    `;
+    grid.appendChild(card);
+
+    const galeria = carta.fotos ? `<div class="letter-modal-gallery">${carta.fotos.map(f => `<img src="${f}" alt="${carta.nome}" loading="lazy">`).join('')}</div>` : '';
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.id = carta.id;
+    modal.innerHTML = `
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('${carta.id}')">✕</button>
+        ${galeria}
+        ${carta.texto}
+        <span class="modal-signature">— ${carta.nome}</span>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal(carta.id);
+    });
+  });
+}
 
 /* ===========================
    31 MOTIVOS
@@ -1255,6 +1440,7 @@ function initScrollEffects() {
    INIT
 =========================== */
 buildMotivos();
+buildCartasAmigos();
 buildCofre();
 updateCounter();
 setInterval(updateCounter, 1000);
