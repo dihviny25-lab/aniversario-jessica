@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Feliz Aniversário, Jéssica! 💛 | 31 anos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Dancing+Script:wght@500;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.1.14/swiper-bundle.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.1.14/swiper-bundle.min.js"></script>
+
+<style>
+/* ===========================
+   TOKENS & RESET
+=========================== */
+:root {
+  --bg:       #fdedf0;
+  --bg2:      #f8d7dd;
+  --card:     #ffffff;
+  --gold:     #c2903a;
+  --gold-lt:  #e0b563;
+  --wine:     #c14267;
+  --wine-lt:  #dd6b8c;
+  --ink:      #3a232b;
+  --ink-dim:  #8c6e76;
+  --white:    #ffffff;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-script:  'Dancing Script', cursive;
+  --font-body:    'Lato', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.gold { color: var(--gold); }
+.hidden { display: none !important; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes particleFall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(30deg); opacity: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(184,146,63,0.25); }
+  50%       { box-shadow: 0 0 38px rgba(184,146,63,0.5); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   DIVIDER
+=========================== */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px auto;
+  max-width: 320px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+.divider-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+
+/* ===========================
+   SECTION BASE
+=========================== */
+.chapter {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px;
+  position: relative;
+  text-align: center;
+}
+.chapter:nth-of-type(even) { background: var(--bg2); }
+
+.chapter-label {
+  font-family: var(--font-body);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+.chapter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+.chapter-title em {
+  font-style: italic;
+  color: var(--wine);
+}
+.chapter-text {
+  max-width: 640px;
+  font-size: 1.1rem;
+  color: var(--ink-dim);
+  margin: 0 auto 16px;
+}
+
+/* ===========================
+   HERO / CAPA
+=========================== */
+#capa {
+  background: radial-gradient(ellipse at top, #fff5f7 0%, var(--bg) 60%);
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--wine);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.hero-title {
+  font-family: var(--font-script);
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  color: var(--ink);
+  line-height: 1;
+}
+.hero-number {
+  font-family: var(--font-serif);
+  font-size: clamp(6rem, 22vw, 13rem);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--gold);
+  line-height: 0.9;
+  margin: 8px 0;
+  background: linear-gradient(90deg, var(--gold-lt), var(--gold), var(--gold-lt));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+.hero-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--ink-dim);
+  max-width: 460px;
+  margin: 12px auto 40px;
+}
+.play-btn {
+  background: linear-gradient(135deg, var(--wine), var(--wine-lt));
+  color: var(--white);
+  border: none;
+  padding: 18px 40px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(139,41,66,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.play-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 36px rgba(139,41,66,0.35); }
+.play-btn.playing { animation: none; }
+.hero-signature {
+  margin-top: 32px;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 1.4rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===========================
+   PORTRAIT / PHOTOS
+=========================== */
+.portrait-frame {
+  width: min(280px, 60vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--gold-lt);
+  box-shadow: 0 20px 50px rgba(139,41,66,0.15);
+  margin: 0 auto 36px;
+  animation: glow 4s ease-in-out infinite;
+}
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+.wide-photo {
+  width: min(560px, 88vw);
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(43,36,25,0.12);
+  margin: 32px auto 8px;
+}
+.wide-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ===========================
+   FAMILY CARDS
+=========================== */
+.family-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  margin: 8px auto 32px;
+}
+.family-card { text-align: center; }
+.family-card-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold-lt);
+  margin: 0 auto 10px;
+  box-shadow: 0 10px 24px rgba(43,36,25,0.12);
+}
+.family-card-photo img { width: 100%; height: 100%; object-fit: cover; }
+.family-card-name { font-family: var(--font-serif); font-size: 1.1rem; color: var(--ink); }
+.family-card-age { font-size: 0.85rem; color: var(--ink-dim); }
+
+/* ===========================
+   LINHA DO TEMPO
+=========================== */
+.timeline {
+  max-width: 560px;
+  margin: 16px auto 0;
+  text-align: left;
+  position: relative;
+  padding-left: 28px;
+}
+.timeline-line {
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold-lt), var(--wine-lt));
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 30px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--wine);
+  border: 3px solid var(--card);
+  box-shadow: 0 0 0 2px var(--gold-lt);
+}
+.timeline-date {
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.timeline-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 2px 0 4px;
+}
+.timeline-desc {
+  font-size: 0.92rem;
+  color: var(--ink-dim);
+}
+
+/* ===========================
+   LETTER CARDS / MODALS
+=========================== */
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 720px;
+  margin: 16px auto 0;
+}
+.letter-card {
+  background: var(--card);
+  border: 1px solid rgba(184,146,63,0.25);
+  border-radius: 18px;
+  padding: 32px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(43,36,25,0.06);
+}
+.letter-card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(43,36,25,0.12); }
+.letter-card-icon { font-size: 2.4rem; margin-bottom: 12px; }
+.letter-card-name { font-family: var(--font-serif); font-size: 1.25rem; color: var(--ink); margin-bottom: 4px; }
+.letter-card-hint { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+
+.open-letter-btn {
+  background: var(--card);
+  border: 1.5px solid var(--gold);
+  color: var(--wine);
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  margin-top: 20px;
+}
+.open-letter-btn:hover { background: var(--gold); color: var(--white); }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43,36,25,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--card);
+  max-width: 520px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 40px 32px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+  white-space: pre-line;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--ink-dim);
+  cursor: pointer;
+}
+.modal-signature {
+  display: block;
+  margin-top: 20px;
+  font-style: italic;
+  color: var(--wine);
+}
+
+/* ===========================
+   31 MOTIVOS
+=========================== */
+.motivos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+  max-width: 900px;
+  margin: 16px auto 0;
+  text-align: left;
+}
+.motivo-card {
+  background: var(--card);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  box-shadow: 0 4px 14px rgba(43,36,25,0.05);
+}
+.motivo-num {
+  font-family: var(--font-serif);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.motivo-text { font-size: 0.92rem; color: var(--ink); }
+
+/* ===========================
+   COFRE DE MEMÓRIAS
+=========================== */
+.cofre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  max-width: 900px;
+  margin: 16px auto 0;
+}
+.cofre-item {
+  aspect-ratio: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(43,36,25,0.08);
+  border: 1px solid rgba(184,146,63,0.2);
+}
+.cofre-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.cofre-item:hover img { transform: scale(1.08); }
+
+.cofre-swiper {
+  width: 100%;
+  max-width: 900px;
+  margin: 16px auto 0;
+  padding: 20px 0 50px;
+}
+.cofre-swiper .swiper-slide {
+  width: 260px;
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgba(43,36,25,0.15);
+  border: 1px solid rgba(184,146,63,0.25);
+}
+.cofre-swiper .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cofre-swiper .swiper-pagination-bullet { background: var(--gold); opacity: 0.4; }
+.cofre-swiper .swiper-pagination-bullet-active { opacity: 1; background: var(--wine); }
+
+/* ===========================
+   MINISTÉRIO
+=========================== */
+.ministerio-icons {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin: 8px 0 28px;
+  font-size: 2.4rem;
+}
+
+/* ===========================
+   SONHOS
+=========================== */
+.sonhos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  max-width: 780px;
+  margin: 16px auto 0;
+}
+.sonho-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px 20px;
+  box-shadow: 0 10px 26px rgba(43,36,25,0.07);
+}
+.sonho-icon { font-size: 2rem; margin-bottom: 10px; }
+.sonho-text { font-family: var(--font-display); font-size: 1.05rem; color: var(--ink); }
+
+/* ===========================
+   CONTADOR
+=========================== */
+.counter-card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 36px 28px;
+  max-width: 620px;
+  margin: 16px auto;
+  box-shadow: 0 16px 40px rgba(43,36,25,0.08);
+}
+.counter-time {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 10px;
+}
+.time-unit { text-align: center; min-width: 64px; }
+.time-value {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--wine);
+  font-weight: 700;
+}
+.time-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-dim); }
+
+.stat-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 28px;
+}
+.stat-item { text-align: center; }
+.stat-value { font-family: var(--font-serif); font-size: 1.8rem; color: var(--gold); }
+.stat-label { font-size: 0.78rem; color: var(--ink-dim); }
+
+/* ===========================
+   FINAL
+=========================== */
+#final { background: linear-gradient(180deg, var(--bg2), var(--bg)); }
+.final-title {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  color: var(--wine);
+  margin-bottom: 20px;
+}
+.final-signature {
+  margin-top: 32px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+/* ===========================
+   PARTICLE RAIN
+=========================== */
+#particle-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 150;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  top: -10vh;
+  will-change: transform, opacity;
+}
+
+/* ===========================
+   MUSIC TOGGLE
+=========================== */
+#music-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1.5px solid var(--gold);
+  color: var(--wine);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 8px 22px rgba(43,36,25,0.15);
+}
+
+@media (max-width: 600px) {
+  .chapter { padding: 60px 18px; }
+}
+</style>
+</head>
+<body>
+
+<div id="particle-container"></div>
+
+<audio id="bg-music" src="assets/musica.mp3" loop></audio>
+<button id="music-toggle" onclick="toggleMusic()">🔇</button>
+
+<!-- CAPA -->
+<section id="capa" class="chapter">
+  <div class="hero-eyebrow">12 de Setembro</div>
+  <h1 class="hero-title">Jéssica</h1>
+  <div class="hero-number">31</div>
+  <p class="hero-sub">Trinta e um anos de uma vida que ilumina a nossa.</p>
+  <button id="play-btn" class="play-btn" onclick="openGift()">💛 Abrir meu presente</button>
+  <div class="hero-signature">Com amor, Diego, Ester, Estevão e Ethan</div>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- CAP 1 — QUEM É A JÉSSICA -->
+<section class="chapter" data-section="retrato">
+  <div class="chapter-label">Um retrato de você</div>
+  <h2 class="chapter-title reveal">Quem é a <em>Jéssica</em></h2>
+  <div class="portrait-frame reveal">
+    <img src="fotos/20260104_212747.jpg" alt="Jéssica" loading="lazy">
+  </div>
+  <p class="chapter-text reveal">
+    Tem gente que entra numa sala e muda o clima dela. Jéssica é assim.
+    Você é esposa, é mãe de três, é aquela que segura a casa em pé nos dias difíceis
+    e ainda sobra colo pra quem precisa. É guerreira sem parecer, é doce sem perder
+    a força, é fé que não vacila mesmo quando o chão balança.
+  </p>
+  <p class="chapter-text reveal">
+    É a mulher do sorriso que a gente reconhece de longe, do nariz que franze
+    quando ri de verdade. É quem lidera ao meu lado, quem dança quando adora,
+    quem sonha alto mesmo com a agenda cheia.
+  </p>
+  <p class="chapter-text reveal">
+    Hoje o mundo comemora 31 anos da sua chegada — e a gente comemora 31 anos
+    de ter você por perto.
+  </p>
+  <div class="divider reveal"><span class="divider-icon">💛</span></div>
+</section>
+
+<!-- CAP 2 — LINHA DO TEMPO -->
+<section class="chapter" data-section="historia">
+  <div class="chapter-label">Capítulo 2</div>
+  <h2 class="chapter-title reveal">Nossa <em>história</em></h2>
+  <div class="timeline reveal">
+    <div class="timeline-line"></div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Novembro de 2016</div>
+      <div class="timeline-name">Nos conhecemos</div>
+      <p class="timeline-desc">Na igreja, através de uma amiga em comum. Ninguém imaginava o tamanho que aquilo ia tomar.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">03 de Agosto de 2017</div>
+      <div class="timeline-name">Começamos a namorar</div>
+      <p class="timeline-desc">O início de tudo o que viria depois.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">28 de Abril de 2018</div>
+      <div class="timeline-name">Nos casamos</div>
+      <p class="timeline-desc">No cartório, sem cerimônia — só nós dois assinando o compromisso mais importante da nossa vida.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">03 de Maio de 2019</div>
+      <div class="timeline-name">Nasceu a Ester</div>
+      <p class="timeline-desc">Nossa primeira filha, e o começo de sermos família de três... depois de quatro, depois de cinco.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">04 de Fevereiro de 2021</div>
+      <div class="timeline-name">Nasceu o Estevão</div>
+      <p class="timeline-desc">No meio de um dos períodos mais difíceis, mais uma prova de que Deus não nos deixou.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">24 de Janeiro de 2025</div>
+      <div class="timeline-name">Nasceu o Ethan</div>
+      <p class="timeline-desc">O caçula que completou a nossa família.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">12 de Setembro de 2026</div>
+      <div class="timeline-name">Hoje: 31 anos</div>
+      <p class="timeline-desc">Trinta e um anos de uma vida que só fez a nossa família ficar mais bonita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 3 — MÃE -->
+<section class="chapter" data-section="mae">
+  <div class="chapter-label">Capítulo 3</div>
+  <h2 class="chapter-title reveal">A melhor <em>mãe</em> do mundo</h2>
+  <div class="family-cards reveal">
+    <div class="family-card">
+      <div class="family-card-photo"><img src="fotos/familia/ester.jpg" alt="Ester" loading="lazy"></div>
+      <div class="family-card-name">Ester</div>
+      <div class="family-card-age">7 anos</div>
+    </div>
+    <div class="family-card">
+      <div class="family-card-photo"><img src="fotos/familia/estevao.jpg" alt="Estevão" loading="lazy"></div>
+      <div class="family-card-name">Estevão</div>
+      <div class="family-card-age">5 anos</div>
+    </div>
+    <div class="family-card">
+      <div class="family-card-photo"><img src="fotos/familia/ethan.jpg" alt="Ethan" loading="lazy"></div>
+      <div class="family-card-name">Ethan</div>
+      <div class="family-card-age">1 ano</div>
+    </div>
+  </div>
+  <p class="chapter-text reveal">
+    Ester, Estevão e Ethan tiveram muita sorte. Sorte de ter uma mãe que troca
+    noite mal dormida por colo, birra por paciência, e cansaço por mais um
+    "eu te amo" antes de dormir. Você é o colo que eles procuram primeiro
+    e o nome que vão lembrar com carinho a vida inteira.
+  </p>
+  <div class="wide-photo reveal">
+    <img src="fotos/familia/familia.jpg" alt="Família" loading="lazy">
+  </div>
+</section>
+
+<!-- CAP 4 — ESPOSA -->
+<section class="chapter" data-section="esposa">
+  <div class="chapter-label">Capítulo 4</div>
+  <h2 class="chapter-title reveal">Minha <em>esposa</em></h2>
+  <div class="wide-photo reveal" style="max-width:340px">
+    <img src="fotos/favoritas/20230514_215403.jpg" alt="Jéssica e Diego" loading="lazy">
+  </div>
+  <div class="wide-photo reveal" style="max-width:220px">
+    <img src="fotos/20260426_124519.jpg" alt="Aliança" loading="lazy">
+  </div>
+  <p class="chapter-text reveal">Uma carta que eu escrevi só pra você.</p>
+  <button class="open-letter-btn reveal" onclick="openModal('carta-diego')">💌 Ler carta do Diego</button>
+</section>
+
+<!-- CAP 5 — MINISTÉRIO -->
+<section class="chapter" data-section="ministerio">
+  <div class="chapter-label">Capítulo 5</div>
+  <h2 class="chapter-title reveal">Fé em <em>ação, a dois</em></h2>
+  <div class="ministerio-icons reveal">
+    <span>💑</span><span>💃</span><span>🧒</span>
+  </div>
+  <p class="chapter-text reveal">
+    Fora de casa, vocês continuam servindo juntos. Você e o Diego lideram o
+    Ministério de Casais, caminhando ao lado de outras famílias. Vocês também
+    lideram o Ministério Infantil, cuidando das crianças da igreja com o mesmo
+    carinho que cuidam dos de vocês.
+  </p>
+  <p class="chapter-text reveal">
+    E no meio de tudo isso, tem a dança — o seu jeito de adorar com o corpo
+    inteiro, de um jeito que só você tem.
+  </p>
+</section>
+
+<!-- CAP 6 — CARTAS DOS FILHOS -->
+<section class="chapter" data-section="filhos">
+  <div class="chapter-label">Capítulo 6</div>
+  <h2 class="chapter-title reveal">Cartas pra <em>mamãe</em></h2>
+  <div class="letters-grid reveal">
+    <div class="letter-card" onclick="openModal('carta-ester')">
+      <div class="letter-card-icon">👧</div>
+      <div class="letter-card-name">Ester</div>
+      <div class="letter-card-hint">abrir carta</div>
+    </div>
+    <div class="letter-card" onclick="openModal('carta-estevao')">
+      <div class="letter-card-icon">👦</div>
+      <div class="letter-card-name">Estevão</div>
+      <div class="letter-card-hint">abrir carta</div>
+    </div>
+    <div class="letter-card" onclick="openModal('carta-ethan')">
+      <div class="letter-card-icon">👶</div>
+      <div class="letter-card-name">Ethan</div>
+      <div class="letter-card-hint">abrir carta</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 7 — 31 MOTIVOS -->
+<section class="chapter" data-section="motivos">
+  <div class="chapter-label">Capítulo 7</div>
+  <h2 class="chapter-title reveal">31 motivos pra <em>celebrar você</em></h2>
+  <div class="motivos-grid reveal" id="motivos-grid"></div>
+</section>
+
+<!-- CAP 8 — SONHOS -->
+<section class="chapter" data-section="sonhos">
+  <div class="chapter-label">Capítulo 8</div>
+  <h2 class="chapter-title reveal">O que ainda vem <em>por aí</em></h2>
+  <div class="sonhos-grid reveal">
+    <div class="sonho-card">
+      <div class="sonho-icon">🏡</div>
+      <div class="sonho-text">Uma casa pensada nos mínimos detalhes do jeito que você sempre quis — estilo casa de fazenda, com a sua cara.</div>
+    </div>
+    <div class="sonho-card">
+      <div class="sonho-icon">✈️</div>
+      <div class="sonho-text">Viajar bastante e conhecer praias diferentes pelo mundo, em família.</div>
+    </div>
+    <div class="sonho-card">
+      <div class="sonho-icon">❄️</div>
+      <div class="sonho-text">Ver neve de verdade, pelo menos uma vez.</div>
+    </div>
+  </div>
+  <p class="chapter-text reveal" style="margin-top:24px">A história de vocês ainda tem muitos capítulos pela frente.</p>
+</section>
+
+<!-- CAP 9 — COFRE DE MEMÓRIAS -->
+<section class="chapter" data-section="cofre">
+  <div class="chapter-label">Capítulo 9</div>
+  <h2 class="chapter-title reveal">Cofre de <em>memórias</em></h2>
+  <div class="swiper cofre-swiper reveal">
+    <div class="swiper-wrapper" id="cofre-grid"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- CAP 10 — CONTADOR -->
+<section class="chapter" data-section="contador">
+  <div class="chapter-label">Capítulo 10</div>
+  <h2 class="chapter-title reveal">Há 31 anos, o mundo <em>ficou mais bonito</em></h2>
+  <div class="counter-card reveal">
+    <div class="counter-time">
+      <div class="time-unit"><span class="time-value" id="v-anos">0</span><span class="time-label">anos</span></div>
+      <div class="time-unit"><span class="time-value" id="v-meses">0</span><span class="time-label">meses</span></div>
+      <div class="time-unit"><span class="time-value" id="v-dias">0</span><span class="time-label">dias</span></div>
+      <div class="time-unit"><span class="time-value" id="v-horas">00</span><span class="time-label">horas</span></div>
+      <div class="time-unit"><span class="time-value" id="v-min">00</span><span class="time-label">min</span></div>
+      <div class="time-unit"><span class="time-value" id="v-seg">00</span><span class="time-label">seg</span></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-value">31</span><span class="stat-label">anos</span></div>
+      <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">filhos</span></div>
+      <div class="stat-item"><span class="stat-value">8+</span><span class="stat-label">anos casados</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAP 11 — FINAL -->
+<section id="final" class="chapter" data-section="final">
+  <div class="chapter-label">Capítulo 11</div>
+  <div class="final-title reveal">Feliz Aniversário, Jéssica!</div>
+  <p class="chapter-text reveal">
+    Que Deus abençoe seus 31 anos com muita saúde, alegria e fé.
+    Que os próximos capítulos sejam tão bonitos quanto os que você
+    já escreveu pra gente.
+  </p>
+  <div class="divider reveal"><span class="divider-icon">💛</span></div>
+  <div class="final-signature reveal">Com todo amor, Diego, Ester, Estevão e Ethan</div>
+</section>
+
+<!-- ===========================
+     MODALS — CARTAS
+=========================== -->
+<div class="modal-overlay" id="carta-diego">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('carta-diego')">✕</button>
+    Jéssica,
+
+    Hoje o mundo ficou 31 anos mais bonito, porque foi nesse dia que você chegou nele.
+
+    Lembra como a gente se conheceu? Uma amiga te levou na igreja, e eu lembro de
+    pensar que talvez a gente virasse só bons amigos. Até que um dia eu abri o
+    WhatsApp pra ver sua foto e acabei te ligando sem querer. Você atendeu
+    perguntando se eu precisava de alguma coisa, e eu, sem jeito, só consegui ser
+    sincero: "Não, fui tentar ver sua foto e acabei te ligando." Eu não sabia que
+    aquela ligação boba ia virar isso tudo.
+
+    Sei que, quando a gente olha pra trás, às vezes parece que nosso casamento foi
+    mais marcado pelas dificuldades do que pelas alegrias. Mas eu quero que você
+    saiba que eu vejo as bênçãos: a Ester, o Estevão e o Ethan, nossa casa, nosso
+    carro, e o privilégio de servir a Deus lado a lado com você. Deus sempre nos
+    deu alívio bem no meio das dificuldades, e eu tenho certeza de que foi porque
+    a gente atravessou tudo junto.
+
+    Tem uma época que eu nunca vou esquecer: a pandemia. Eu não conseguia
+    trabalhar, e você, mesmo com nosso bebê pequeno no colo, começou a fazer cone
+    trufado e donuts pra vendermos. Você fazia os doces em casa cuidando do nosso
+    filho, e eu saía pra vender na rua. Foi você que segurou a gente naquele
+    momento, e eu preciso te dizer isso com mais frequência: eu reconheço o
+    tamanho do que você fez por essa família. Não foi pouco.
+
+    E no meio de tanta preocupação, eu continuo reparando nas mesmas coisas de
+    sempre: a sua risada, que eu reconheceria em qualquer lugar. O jeito que seu
+    nariz franze quando você sorri. A cor dos seus olhos. São detalhes pequenos,
+    mas são os que eu mais amo em você.
+
+    Obrigado por ser minha parceira, minha melhor amiga, e a mãe que a Ester, o
+    Estevão e o Ethan têm a sorte de ter. Que Deus continue nos sustentando, como
+    sempre sustentou, por muitos e muitos aniversários.
+
+    Feliz aniversário, amor. Ou, como eu te chamo quando quero te ver sorrir:
+    feliz aniversário, branquela. Eu te amo.
+    <span class="modal-signature">— Diego</span>
+  </div>
+</div>
+
+<div class="modal-overlay" id="carta-ester">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('carta-ester')">✕</button>
+    Mainha,
+
+    Feliz aniversário! Você é a melhor mãe do mundo inteiro. Eu te amo até as
+    estrelas e volta! Obrigada por fazer meu cabelo todo dia, por me ajudar
+    quando eu erro e por me dar beijo de boa noite.
+
+    Eu quero ser igualzinha a você quando crescer.
+    <span class="modal-signature">Beijos da sua Ester 👧💛</span>
+  </div>
+</div>
+
+<div class="modal-overlay" id="carta-estevao">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('carta-estevao')">✕</button>
+    Mãe,
+
+    Feliz niver! Você é a mãe mais forte e mais gostosa de abraçar do mundo
+    todo! Obrigado por fazer comida gostosa e por brincar comigo.
+
+    Eu te amo até o céu, até a lua e até mais um pouquinho!
+    <span class="modal-signature">Do seu Estevão 👦💙</span>
+  </div>
+</div>
+
+<div class="modal-overlay" id="carta-ethan">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('carta-ethan')">✕</button>
+    Mamãe,
+
+    Eu ainda não sei falar direito, mas o papai tá escrevendo por mim: toda
+    vez que você me pega no colo, eu sei que estou no lugar mais seguro do
+    mundo. Seu cheiro, sua voz, seu carinho — é tudo que eu conheço de amor
+    até agora.
+
+    Obrigado por cuidar de mim.
+    <span class="modal-signature">Seu bebê, Ethan 👶🤍</span>
+  </div>
+</div>
+
+<div class="modal-overlay" id="foto-modal">
+  <div class="modal-box" id="foto-modal-content" style="padding:16px; text-align:center;">
+    <button class="modal-close" onclick="closeModal('foto-modal')">✕</button>
+  </div>
+</div>
+
+<script>
+/* ===========================
+   MÚSICA
+=========================== */
+const music = document.getElementById('bg-music');
+let musicPlaying = false;
+
+function toggleMusic() {
+  if (musicPlaying) { music.pause(); }
+  else { music.play().catch(()=>{}); }
+  musicPlaying = !musicPlaying;
+  document.getElementById('music-toggle').textContent = musicPlaying ? '🎵' : '🔇';
+}
+
+function openGift() {
+  const btn = document.getElementById('play-btn');
+  btn.classList.add('playing');
+  btn.textContent = '💛 Aproveite!';
+  if (!musicPlaying) {
+    music.play().catch(()=>{});
+    musicPlaying = true;
+    document.getElementById('music-toggle').textContent = '🎵';
+  }
+  startParticleRain();
+  setTimeout(() => {
+    document.querySelector('[data-section="retrato"]').scrollIntoView({ behavior: 'smooth' });
+  }, 600);
+}
+
+/* ===========================
+   CHUVA DE PARTÍCULAS
+=========================== */
+function startParticleRain() {
+  const container = document.getElementById('particle-container');
+  const symbols = ['💛','🎉','✨','🌟','🎂'];
+  let count = 0;
+  const interval = setInterval(() => {
+    if (count++ > 60) { clearInterval(interval); return; }
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.fontSize = (0.8 + Math.random() * 1.3) + 'rem';
+    const dur = 4 + Math.random() * 4;
+    p.style.animation = `particleFall ${dur}s linear forwards`;
+    container.appendChild(p);
+    setTimeout(() => p.remove(), dur * 1000);
+  }, 250);
+}
+
+/* ===========================
+   REVEAL ON SCROLL
+=========================== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ===========================
+   MODALS
+=========================== */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
+});
+
+/* ===========================
+   31 MOTIVOS
+=========================== */
+const MOTIVOS = [
+  "Por ser a mãe mais dedicada que a Ester, o Estevão e o Ethan poderiam ter.",
+  "Pelo jeito que você segura tudo com fé, mesmo nos dias mais difíceis.",
+  "Pelo seu sorriso, que ilumina qualquer cômodo da casa.",
+  "Por nunca desistir de nós, mesmo cansada.",
+  "Pela sua força silenciosa que sustenta a família inteira.",
+  "Por cuidar de cada detalhe com tanto amor.",
+  "Pela paciência com birra, bagunça e noite mal dormida.",
+  "Por ser colo, casa e porto seguro pros nossos filhos.",
+  "Pelo seu jeito de rezar por todo mundo antes de si mesma.",
+  "Por transformar qualquer dia comum em um dia especial.",
+  "Pelo seu bom humor, mesmo quando o dia não ajuda.",
+  "Por cada \"eu te amo\" dito antes de dormir.",
+  "Por ser exemplo de mulher pra Ester crescer se espelhando.",
+  "Por ensinar o Estevão a ser gentil e corajoso.",
+  "Por embalar o Ethan no colo com tanta ternura.",
+  "Pelo seu jeito de cuidar sem cobrar nada em troca.",
+  "Por continuar sonhando, mesmo com a rotina corrida.",
+  "Pela sua fé, que segura a nossa também.",
+  "Por ser minha melhor amiga além de esposa.",
+  "Por ter coragem de recomeçar todo dia, com o mesmo amor.",
+  "Pelo seu abraço, que resolve qualquer problema.",
+  "Por lembrar de tudo o que a gente esquece.",
+  "Pelo carinho nos detalhes pequenos que ninguém nota, menos nós.",
+  "Por ser tão presente, mesmo com tanta coisa pra dar conta.",
+  "Por transformar a casa em lar todos os dias.",
+  "Pela sua risada, que a gente reconhece de longe.",
+  "Por continuar linda e forte aos 31, mais do que nunca.",
+  "Por cada sacrifício silencioso que você faz por nós.",
+  "Por ser a razão de tantas coisas boas na nossa história.",
+  "Por ainda escolher a gente, todos os dias, com amor.",
+  "Por ser, simplesmente, a Jéssica — e isso já é motivo suficiente."
+];
+
+function buildMotivos() {
+  const grid = document.getElementById('motivos-grid');
+  MOTIVOS.forEach((m, i) => {
+    const card = document.createElement('div');
+    card.className = 'motivo-card';
+    card.innerHTML = `<span class="motivo-num">${String(i+1).padStart(2,'0')}</span><div class="motivo-text">${m}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+/* ===========================
+   COFRE DE MEMÓRIAS
+=========================== */
+function buildCofre() {
+  const wrapper = document.getElementById('cofre-grid');
+  const fotos = [
+    "fotos/20260104_212842.jpg",
+    "fotos/20260718_192631.jpg",
+    "fotos/favoritas/juntos.jpg",
+    "fotos/favoritas/back.jpg",
+    "fotos/favoritas/20251123_212307.jpg",
+    "fotos/favoritas/20230514_215403.jpg",
+    "fotos/favoritas/20210622_170810.jpg",
+    "fotos/favoritas/20220130_184115.jpg",
+    "fotos/favoritas/20230623_201715.jpg",
+    "fotos/favoritas/IMG-20230617-WA0015.jpg",
+    "fotos/favoritas/IMG-20230617-WA0016.jpg",
+    "fotos/momentos/20230524_100148.jpg",
+    "fotos/momentos/20230623_193221.jpg",
+    "fotos/momentos/20250124_135418.jpg",
+    "fotos/momentos/20250317_155532.jpg",
+    "fotos/casamento/beijo.jpg",
+    "fotos/casamento/287d2a52-e013-43d7-b4b1-9646bdf68f79.jpg",
+    "fotos/familia/familia.jpg"
+  ];
+  fotos.forEach(src => {
+    const item = document.createElement('div');
+    item.className = 'swiper-slide';
+    item.innerHTML = `<img src="${src}" alt="Memória" loading="lazy" onerror="this.closest('.swiper-slide').remove()">`;
+    item.onclick = () => {
+      document.getElementById('foto-modal-content').innerHTML =
+        `<button class="modal-close" onclick="closeModal('foto-modal')">✕</button><img src="${src}" style="width:100%; border-radius:14px;">`;
+      openModal('foto-modal');
+    };
+    wrapper.appendChild(item);
+  });
+  new Swiper('.cofre-swiper', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop: true,
+    coverflowEffect: { rotate: 30, stretch: 0, depth: 140, modifier: 1, slideShadows: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    autoplay: { delay: 3200, disableOnInteraction: true }
+  });
+}
+
+/* ===========================
+   CONTADOR — desde 12/09/1995
+=========================== */
+const DATE_NASCIMENTO = new Date('1995-09-12T00:00:00');
+
+function diffDetailed(start, now) {
+  let anos = now.getFullYear() - start.getFullYear();
+  let meses = now.getMonth() - start.getMonth();
+  let dias = now.getDate() - start.getDate();
+  if (dias < 0) { meses--; const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0); dias += prevMonth.getDate(); }
+  if (meses < 0) { anos--; meses += 12; }
+  const totalSec = Math.floor((now - start) / 1000);
+  return {
+    anos, meses, dias,
+    horas: Math.floor(totalSec / 3600) % 24,
+    min: Math.floor(totalSec / 60) % 60,
+    seg: totalSec % 60
+  };
+}
+
+function updateCounter() {
+  const d = diffDetailed(DATE_NASCIMENTO, new Date());
+  const vals = {
+    'v-anos': d.anos,
+    'v-meses': d.meses,
+    'v-dias': d.dias,
+    'v-horas': String(d.horas).padStart(2, '0'),
+    'v-min': String(d.min).padStart(2, '0'),
+    'v-seg': String(d.seg).padStart(2, '0')
+  };
+  Object.entries(vals).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (el.textContent !== String(val)) {
+      el.textContent = val;
+      if (window.gsap) gsap.fromTo(el, { scale: 1.3 }, { scale: 1, duration: 0.4, ease: 'back.out(3)' });
+    }
+  });
+}
+
+/* ===========================
+   GSAP — PARALLAX & TRANSIÇÕES
+=========================== */
+function initScrollEffects() {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  const timelineEl = document.querySelector('.timeline');
+  if (timelineEl) {
+    gsap.to('.timeline-line', {
+      scaleY: 1,
+      ease: 'none',
+      scrollTrigger: { trigger: timelineEl, start: 'top 75%', end: 'bottom 60%', scrub: true }
+    });
+    document.querySelectorAll('.timeline-item').forEach((item, i) => {
+      gsap.from(item, {
+        opacity: 0,
+        x: i % 2 === 0 ? -40 : 40,
+        duration: 0.8,
+        scrollTrigger: { trigger: item, start: 'top 88%' }
+      });
+    });
+  }
+
+  document.querySelectorAll('.portrait-frame img, .wide-photo img').forEach(img => {
+    gsap.to(img, {
+      yPercent: 12,
+      ease: 'none',
+      scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  });
+
+  ScrollTrigger.batch('.motivo-card', {
+    start: 'top 90%',
+    onEnter: batch => gsap.from(batch, { opacity: 0, y: 24, scale: 0.96, duration: 0.5, stagger: 0.04 })
+  });
+
+  ScrollTrigger.batch('.sonho-card', {
+    start: 'top 85%',
+    onEnter: batch => gsap.from(batch, { opacity: 0, y: 30, duration: 0.6, stagger: 0.12 })
+  });
+
+  gsap.from(['.hero-title', '.hero-number', '.hero-sub', '#play-btn'], {
+    opacity: 0, y: 24, duration: 1, stagger: 0.15, delay: 0.2, ease: 'power2.out'
+  });
+}
+
+/* ===========================
+   INIT
+=========================== */
+buildMotivos();
+buildCofre();
+updateCounter();
+setInterval(updateCounter, 1000);
+initScrollEffects();
+</script>
+
+</body>
+</html>
