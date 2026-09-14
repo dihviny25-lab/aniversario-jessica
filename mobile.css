@@ -1,0 +1,256 @@
+/* Mobile-first responsive refinements for the birthday experience */
+@media (max-width: 768px) {
+  html { scroll-padding-top: 0; }
+  body { line-height: 1.6; }
+
+  .chapter {
+    min-height: auto;
+    width: 100%;
+    padding: 64px 20px;
+    overflow: hidden;
+  }
+
+  #capa {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: max(44px, env(safe-area-inset-top)) 20px max(72px, calc(54px + env(safe-area-inset-bottom)));
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    font-size: .7rem;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .hero-title { font-size: clamp(4rem, 19vw, 5.6rem); }
+  .hero-number {
+    font-size: clamp(7rem, 35vw, 10rem);
+    margin: 4px 0;
+    line-height: .85;
+  }
+  .hero-sub {
+    width: min(100%, 340px);
+    font-size: 1.12rem;
+    line-height: 1.45;
+    margin: 16px auto 26px;
+  }
+  .play-btn {
+    width: min(100%, 330px);
+    min-height: 54px;
+    padding: 15px 20px;
+    font-size: .82rem;
+    letter-spacing: .8px;
+  }
+  .hero-signature {
+    width: min(100%, 330px);
+    margin-top: 22px;
+    font-size: .88rem;
+    line-height: 1.45;
+  }
+  .scroll-hint { bottom: max(18px, env(safe-area-inset-bottom)); }
+
+  .chapter-label {
+    font-size: .68rem;
+    letter-spacing: 2.4px;
+    margin-bottom: 10px;
+  }
+  .chapter-title {
+    width: 100%;
+    font-size: clamp(1.85rem, 9vw, 2.5rem);
+    line-height: 1.14;
+    margin-bottom: 20px;
+  }
+  .chapter-text {
+    width: 100%;
+    max-width: 520px;
+    font-size: 1rem;
+    line-height: 1.72;
+    margin-bottom: 14px;
+  }
+  .divider { width: min(82%, 280px); margin: 30px auto; }
+
+  .portrait-frame {
+    width: min(68vw, 250px);
+    margin-bottom: 28px;
+  }
+  .wide-photo {
+    width: 100%;
+    max-width: 430px !important;
+    aspect-ratio: 4 / 5;
+    margin: 24px auto 8px;
+    border-radius: 16px;
+  }
+
+  .family-cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 4px auto 26px;
+  }
+  .family-card { min-width: 0; }
+  .family-card-photo {
+    width: min(25vw, 94px);
+    height: min(25vw, 94px);
+    border-width: 2px;
+  }
+  .family-card-name { font-size: 1rem; }
+  .family-card-age { font-size: .76rem; }
+
+  .timeline {
+    width: 100%;
+    max-width: 520px;
+    padding-left: 25px;
+    margin-top: 8px;
+  }
+  .timeline-dot { left: -25px; }
+  .timeline-item { padding-bottom: 25px; }
+  .timeline-date { font-size: .7rem; }
+  .timeline-name { font-size: 1.18rem; }
+  .timeline-desc { font-size: .9rem; line-height: 1.55; }
+
+  .letters-grid,
+  .motivos-grid,
+  .sonhos-grid {
+    width: 100%;
+    max-width: 520px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .letter-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    align-items: center;
+    text-align: left;
+    padding: 14px 16px;
+    border-radius: 15px;
+  }
+  .letter-card-icon,
+  .letter-card-photo {
+    grid-row: 1 / 3;
+    grid-column: 1;
+    margin: 0;
+  }
+  .letter-card-icon { width: 68px; text-align: center; font-size: 2rem; }
+  .letter-card-photo { width: 68px; height: 68px; border-radius: 13px; }
+  .letter-card-name { grid-column: 2; align-self: end; font-size: 1.12rem; }
+  .letter-card-hint { grid-column: 2; align-self: start; font-size: .7rem; }
+
+  .open-letter-btn {
+    width: min(100%, 330px);
+    min-height: 50px;
+    padding: 13px 18px;
+    font-size: .8rem;
+  }
+
+  .motivo-card { padding: 13px 15px; gap: 9px; }
+  .motivo-text { font-size: .9rem; line-height: 1.5; }
+
+  .sonho-card { padding: 22px 18px; }
+  .sonho-icon { font-size: 1.8rem; }
+
+  .ministerio-icons { gap: 20px; font-size: 2rem; margin-bottom: 22px; }
+
+  .cofre-swiper {
+    width: calc(100% + 40px);
+    max-width: none;
+    margin-left: -20px;
+    padding: 14px 0 42px;
+  }
+  .cofre-swiper .swiper-slide { width: min(72vw, 280px); height: min(72vw, 280px); }
+
+  .counter-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 26px 16px;
+    border-radius: 18px;
+  }
+  .counter-time {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 8px;
+  }
+  .time-unit { min-width: 0; }
+  .time-value { font-size: 1.8rem; line-height: 1.15; }
+  .time-label { font-size: .64rem; }
+  .stat-row { gap: 12px; justify-content: space-around; }
+  .stat-item { flex: 1 1 28%; }
+  .stat-value { display: block; font-size: 1.5rem; }
+  .stat-label { display: block; font-size: .7rem; }
+
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .modal-box {
+    max-width: none;
+    max-height: min(90vh, 90svh);
+    width: 100%;
+    border-radius: 22px 22px 0 0;
+    padding: 44px 20px max(28px, calc(20px + env(safe-area-inset-bottom)));
+    font-size: 1.03rem;
+    line-height: 1.62;
+    overscroll-behavior: contain;
+  }
+  .modal-close {
+    position: sticky;
+    float: right;
+    top: 0;
+    margin-top: -32px;
+    margin-right: -4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    z-index: 2;
+  }
+  .letter-modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+  }
+  .letter-modal-gallery img { width: 100%; height: 120px; min-width: 0; }
+  #foto-modal-content img { max-height: 78svh; object-fit: contain; }
+
+  #music-toggle {
+    width: 48px;
+    height: 48px;
+    right: 14px;
+    bottom: max(14px, calc(10px + env(safe-area-inset-bottom)));
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .chapter { padding-left: 16px; padding-right: 16px; }
+  #capa { padding-left: 16px; padding-right: 16px; }
+  .hero-title { font-size: 3.8rem; }
+  .hero-number { font-size: 7.2rem; }
+  .hero-sub { font-size: 1.02rem; }
+  .family-cards { gap: 8px; }
+  .family-card-photo { width: 24vw; height: 24vw; }
+  .family-card-name { font-size: .9rem; }
+  .counter-card { padding-left: 10px; padding-right: 10px; }
+  .time-value { font-size: 1.55rem; }
+}
+
+@media (max-height: 700px) and (max-width: 768px) {
+  #capa { padding-top: 28px; padding-bottom: 54px; }
+  .hero-eyebrow { margin-bottom: 6px; }
+  .hero-title { font-size: clamp(3.4rem, 16vw, 4.6rem); }
+  .hero-number { font-size: clamp(6rem, 28vw, 8rem); }
+  .hero-sub { margin: 10px auto 18px; }
+  .hero-signature { margin-top: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
